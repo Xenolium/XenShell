@@ -1,28 +1,3 @@
-<#
-.SYNOPSIS
-  Install or UnInstall Microsoft Teams Client.
-  
-.DESCRIPTION
-  Install or Uninstall Microsoft Teams Client. Select 32bit or 64bit version. Check if Teams exist before (un)installation. Default option is 64bit.
-
-  Download the Teams client from https://teams.microsoft.com/downloads
-
-.EXAMPLE
-  Install Teams
-
-  .\Install-MicrosoftTeams.ps1 -source '\\filesrv\Repository\Microsoft\Teams'
-
-.EXAMPLE
-  Install 32bit version of Teams
-
-   .\Install-MicrosoftTeams.ps1 -source '\\filesrv\Repository\Microsoft\Teams' -version 'x86'
-
-.EXAMPLE
-  Uninstall Teams
-
-  .\Install-MicrosoftTeams.ps1 -uninstall $true
-#>
-
 #----------------------------------------------------------[Declarations]----------------------------------------------------------
 [CmdletBinding()]
 PARAM(	
