@@ -14,9 +14,7 @@ steps:
   displayName: 'Run a one-line script'
 
 variables:
-  buildConfiguration: 'Release'
-
-stages:
+  buildConfiguration: 'Release'stages:
 - stage: CI
   displayName: CI stage
   jobs:
@@ -24,9 +22,7 @@ stages:
     displayName: Build
     steps:
     - script: echo This is a BUILD job
-      displayName: 'Build project'
-      
-- stage: CD
+      displayName: 'Build project'- stage: CD
   displayName: CD stage
   jobs:
   - deployment: deploy
@@ -36,8 +32,7 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: echo This is a DEPLOYMENT job
-            displayName: 'Deploy project'
+          - script: echo This is a DEPLOYME
 
 - task: PowerShell@2
   inputs:
