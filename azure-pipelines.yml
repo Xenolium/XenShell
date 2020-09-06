@@ -13,6 +13,32 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
+variables:
+  buildConfiguration: 'Release'
+
+stages:
+- stage: CI
+  displayName: CI stage
+  jobs:
+  - job: build
+    displayName: Build
+    steps:
+    - script: echo This is a BUILD job
+      displayName: 'Build project'
+      
+- stage: CD
+  displayName: CD stage
+  jobs:
+  - deployment: deploy
+    displayName: Deploy
+    environment: VMs
+    strategy: 
+      runOnce:
+        deploy:
+          steps:
+          - script: echo This is a DEPLOYMENT job
+            displayName: 'Deploy project'
+
 - task: PowerShell@2
   inputs:
     filePath: '$(System.DefaultWorkingDirectory)/Install-MicrosoftTeams.ps1'
