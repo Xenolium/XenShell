@@ -1,27 +1,11 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-# Script for Windows
-pool: { vmImage: windows-2019 } # or whatever pool you use
-steps:
-- checkout: none
-- powershell: |
-    filePath: '$(System.DefaultWorkingDirectory)/Install-MicrosoftTeams.ps1'
-    $SEARCH_PATH=$Env:Path
-    Write-Host "##[debug] Found directories"
-    ForEach ($Dir in $SEARCH_PATH -split ";") {
-      Write-Host "$Dir"
-    }
-    Write-Host ""
-    Write-Host ""
-    Write-Host "##[debug] Found files"
-    ForEach ($Dir in $SEARCH_PATH -split ";") {
-      Get-ChildItem $Dir -File -ErrorAction Continue | ForEach-Object -Process {
-        Write-Host $_.FullName
-      }
-    }
-    
 trigger:
 - master
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+  
+ Settings
+ - task: PowerShell@2
+   inputs:
+     filePath: '$(System.DefaultWorkingDirectory)/Install-MicrosoftTeams.ps1'
